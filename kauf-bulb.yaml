@@ -49,6 +49,13 @@ esphome:
             call.set_brightness(1.0);
             call.perform();
           }
+          else if (id(select_boot_state).state == "Always On - Warm White") {
+            auto call = id(kauf_light).turn_on();
+            call.set_color_mode(ColorMode::COLOR_TEMPERATURE);
+            call.set_color_temperature(350);
+            call.set_brightness(1.0);
+            call.perform();
+          }
           else if (id(select_boot_state).state == "Always Off") {
             auto call = id(kauf_light).turn_off();
             call.perform();
@@ -175,6 +182,7 @@ select:
       - "Restore Power Off State"
       - "Always On - Last Value"
       - "Always On - Bright White"
+      - "Always On - Warm White"
       - "Always Off"
     # defaulting to always on is nice so you know new bulbs are working
     initial_option: "Always On - Bright White"
