@@ -1,17 +1,13 @@
 substitutions:
 
-  name: kauf-bulb              # **** CHANGE DEVICE NAME TO SOMETHING UNIQUE PER DEVICE.  RENAME YAML FILE TO SAME NAME.    ****
+  name: kauf-bulb-d520d7              # **** CHANGE DEVICE NAME TO SOMETHING UNIQUE PER DEVICE.  RENAME YAML FILE TO SAME NAME.    ****
                                # **** USE DASHES (-) INSTEAD OF SPACES OR UNDERSCORE (_).  USE ONLY LOWER CASE LETTERS.     ****
   
-  friendly_name: Kauf Bulb     # **** CHANGE FRIENDLY NAME TO SOMETHING UNIQUE PER DEVICE ****
+  friendly_name: Kitchen Overhead 4     # **** CHANGE FRIENDLY NAME TO SOMETHING UNIQUE PER DEVICE ****
 
 esp8266:                       # https://esphome.io/components/esp8266.html
   board: esp01_1m
   restore_from_flash: true
-
-  framework:                   # provides updated PWM logic per https://github.com/esp8266/Arduino/pull/7231
-    version: 3.0.2             # https://github.com/esp8266/Arduino/releases
-    platform_version: 3.2.0    # https://github.com/platformio/platform-espressif8266/releases/
 
 external_components:
   - source:
@@ -73,10 +69,8 @@ button:
     disabled_by_default: true
 
 wifi:
-
-  # **** ENTER WI-FI CREDENTIALS HERE, USING SECRETS.YAML RECOMMENDED ****
-  ssid: initial_ap2          # !secret wifi_ssid
-  password: asdfasdfasdfasdf # !secret wifi_pass
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
 
     # Uncomment below to set a static IP
   # manual_ip:
